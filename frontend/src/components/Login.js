@@ -1,75 +1,6 @@
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-// import React, { useState } from "react";
-
-// const Login = () => {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const navigate = useNavigate();
-
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
-//     // Call the API to handle user login
-//     console.log(email, password);
-//     try {
-//       await axios.post("http://localhost:5000/login", {
-//         email,
-//         password,
-//       });
-//       navigate("/records");
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   return (
-//     <div className="bg-gray-600 p-24 ">
-//       <form onSubmit={handleSubmit} className="flex flex-col p-4 card-body ">
-//         <h1 className="flex text-white font-semibold text-2xl justify-center">
-//           Login
-//         </h1>
-//         <div className="m-4 bg-slate-400 p-4 form-control justify-center pl-24 pr-24">
-//           <label className="text-white bg-red-300">
-//             Email
-//             <div className="flex justify-center">
-//               <input
-//                 className="rounded-md ml-4 w-full"
-//                 type="email"
-//                 value={email}
-//                 onChange={(e) => setEmail(e.target.value)}
-//               />
-//             </div>
-//           </label>
-//         </div>
-//         <div className="m-4 bg-slate-400 p-4">
-//           <label className="text-white ">
-//             Password
-//             <input
-//               className="rounded-md ml-4"
-//               type="password"
-//               value={password}
-//               onChange={(e) => setPassword(e.target.value)}
-//             />
-//           </label>
-//         </div>
-//         <div>
-//           <button
-//             type="submit"
-//             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-//           >
-//             Log in
-//           </button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -144,13 +75,24 @@ const Login = () => {
                 />
               </div>
             </div>
-            <div>
+            <div className="flex items-center flex-col justify-between">
               <button
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Log in
               </button>
+              <div>
+                <h2 className="text-black text-bold p-4">OR</h2>
+              </div>
+              <div className="">
+                <Link
+                  to="/signup"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Sign up
+                </Link>
+              </div>
             </div>
           </form>
         </div>
