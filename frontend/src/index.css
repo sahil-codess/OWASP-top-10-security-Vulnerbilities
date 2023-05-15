@@ -5,4 +5,6 @@
 body {
   margin: auto;
   padding: auto;
+  background-color: white !important;
+  height: 100vh;
 }

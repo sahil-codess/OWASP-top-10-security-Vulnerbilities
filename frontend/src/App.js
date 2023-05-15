@@ -9,7 +9,7 @@ import Signup from "./components/Signup";
 
 function App() {
   return (
-    <div className="container p-32 bg-gray-200">
+    <div className="container">
       <BrowserRouter>
         <Routes>
           <Route path="/signup" element={<Signup />} />

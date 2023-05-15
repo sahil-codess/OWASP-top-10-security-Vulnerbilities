@@ -31,24 +31,26 @@ const RecordList = () => {
 
   return (
     <div>
-      <div className="bg-white pl-32">
-        <Link to="/add" className="btn-primary p-2 rounded-lg">
+      <div className="flex justify-center flex-col">
+        <Link to="/add" className="btn-primary p-2 rounded-lg w-28 mt-10">
           Add Record
         </Link>
         <table className="table border-collaps table-normal mt-5">
-          <thead className="border border-slate-600">
-            <tr>
+          <thead className="border">
+            <tr className="text-white">
               <th>ID</th>
               <th>Name</th>
               <th>Email</th>
               <th>Phone Number</th>
               <th>Gender</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {records.map((record, index) => {
               return (
-                <tr key={index}>
+                <tr key={index} className="text-white">
                   <td>{index + 1}</td>
                   <td>{record.name}</td>
                   <td>{record.email}</td>
@@ -59,7 +61,7 @@ const RecordList = () => {
                       to={`/edit/${record._id}`}
                       className="btn btn-accent p-2 pl-4 pr-4 rounded-md"
                     >
-                      Edit
+                      Update
                     </Link>
                   </td>
                   <td>
