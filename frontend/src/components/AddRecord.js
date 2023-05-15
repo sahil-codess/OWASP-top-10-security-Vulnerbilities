@@ -18,7 +18,7 @@ const AddRecord = () => {
         phoneNumber,
         gender,
       });
-      navigate("/");
+      navigate("/records");
     } catch (error) {
       console.log(error);
     }

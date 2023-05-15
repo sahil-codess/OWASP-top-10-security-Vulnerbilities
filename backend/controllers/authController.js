@@ -1,8 +1,9 @@
 import User from "./../models/userModel.js";
 
 export const signup = async (req, res) => {
+  const user = new User(req.body);
   try {
-    const newUser = await User.create(req.body);
+    const newUser = await user.save();
 
     res.status(200).json({
       status: "success",
