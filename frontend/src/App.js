@@ -5,11 +5,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EditRecord from "./components/EditRecord";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="container pt-5">
+    <div className="container p-32 bg-gray-200">
       <BrowserRouter>
         <Routes>
           <Route path="/signup" element={<Signup />} />
