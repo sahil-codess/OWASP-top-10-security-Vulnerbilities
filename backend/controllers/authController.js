@@ -20,7 +20,6 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.find({ email }).select("+password");
     // check if the user exists
     if (!email || !password) {
       return res
@@ -28,10 +27,10 @@ export const login = async (req, res) => {
         .json({ message: "Please provide a valid email and password." });
     }
     // Find user by email and check if password matches
-    if (!user) {
+    const user = await User.findOne({ email }).select("+password");
+    if (!user || !(await user.correctPassword(password, user.password))) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
-
     // Send response to client
     res.json({ message: "Login successful" });
   } catch (error) {

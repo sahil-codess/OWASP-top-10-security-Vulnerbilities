@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddRecord = () => {
   const [name, setName] = useState("");
@@ -19,6 +20,16 @@ const AddRecord = () => {
         gender,
       });
       navigate("/records");
+      toast.success("Records Added!🙂", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     } catch (error) {
       console.log(error);
     }

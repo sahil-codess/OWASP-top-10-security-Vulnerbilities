@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const EditRecord = () => {
   const [name, setName] = useState("");
@@ -34,7 +35,17 @@ const EditRecord = () => {
         phoneNumber,
         gender,
       });
-      navigate("/");
+      navigate("/records");
+      toast.success("Record Successfully Updated!🙂", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -42,55 +53,67 @@ const EditRecord = () => {
 
   return (
     <div>
-      <div className="column is-half">
+      <div className="m-10 p-16">
         <form onSubmit={updateRecord}>
-          <div className="field">
-            <label className="label">Name</label>
-            <div className="control">
+          <div className="mb-6">
+            <label className="block font-bold text-black mb-2" htmlFor="name">
+              Name
+            </label>
+            <div className="form-control">
               <input
                 type="text"
                 name="name"
-                className="input"
-                placeholder="Name"
                 value={name}
+                className="input input-bordered border-black text-black bg-white rounded-md w-full"
+                placeholder="Name"
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="field">
-            <label className="label">Email</label>
-            <div className="control">
+          <div className="mb-6">
+            <label className="block font-bold text-black mb-2" htmlFor="email">
+              Email
+            </label>
+            <div className="form-control">
               <input
                 type="text"
                 name="email"
-                className="input"
-                placeholder="Email"
                 value={email}
+                className="input input-bordered border-black text-black bg-white rounded-md w-full"
+                placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="field">
-            <label className="label">Phone Number</label>
-            <div className="control">
+          <div className="mb-6">
+            <label
+              className="block font-bold text-black mb-2"
+              htmlFor="phone-number"
+            >
+              Phone Number
+            </label>
+            <div className="form-control">
               <input
                 type="text"
-                name="phone number"
-                className="input"
-                placeholder="Phone Number"
+                name="phone-number"
                 value={phoneNumber}
+                className="input input-bordered border-black text-black bg-white rounded-md w-full"
+                placeholder="Phone Number"
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="field">
-            <label className="label">Gender</label>
-            <div className="control">
-              <div className="select is-fullwidth">
+          <div className="mb-6">
+            <label className="block font-bold text-black mb-2" htmlFor="gender">
+              Gender
+            </label>
+            <div className="form-control">
+              <div className="">
                 <select
+                  className="select select-bordered border-black text-black bg-white select-accent block w-full rounded-md"
                   name="gender"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
@@ -103,9 +126,12 @@ const EditRecord = () => {
             </div>
           </div>
 
-          <div className="field">
-            <div className="control">
-              <button type="submit" className="button is-success">
+          <div className="mb-6">
+            <div className="">
+              <button
+                type="submit"
+                className="btn btn-primary btn-block rounded-md"
+              >
                 Save
               </button>
             </div>

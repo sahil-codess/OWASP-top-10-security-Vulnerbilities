@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
-const Users = mongoose.Schema({
+const Users = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please tell us your name.."],
@@ -36,5 +36,11 @@ const Users = mongoose.Schema({
     },
   },
 });
+
+Users.methods.correctPassword = async function (userPass, dbPass) {
+  if (userPass === (await dbPass)) {
+    return true;
+  }
+};
 
 export default mongoose.model("User", Users);
