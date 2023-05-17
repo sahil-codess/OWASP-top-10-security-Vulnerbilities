@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./utils/auth";
+import { toast } from "react-toastify";
 
 const RecordList = () => {
   const [records, setRecords] = useState([]);
@@ -33,6 +34,16 @@ const RecordList = () => {
     try {
       await axios.delete(`http://localhost:5000/records/${id}`);
       handleRecord();
+      toast.info("Record Deleted!👍", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     } catch (error) {
       console.log(error);
     }
