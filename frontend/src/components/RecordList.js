@@ -1,13 +1,22 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "./utils/auth";
 
 const RecordList = () => {
   const [records, setRecords] = useState([]);
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   useEffect(() => {
     handleRecord();
   }, []);
+
+  const handleLogout = () => {
+    auth.logout();
+    navigate("/");
+  };
 
   const handleRecord = async () => {
     await axios
@@ -90,6 +99,14 @@ const RecordList = () => {
             })}
           </tbody>
         </table>
+      </div>
+      <div>
+        <button
+          className="btn-error p-2 rounded-lg w-28 mt-10"
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
