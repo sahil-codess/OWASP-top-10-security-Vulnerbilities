@@ -28,8 +28,8 @@ const Login = ({ children }) => {
         password,
       });
       navigate("/records");
-      toast.success("Logged in Successfully🙂", {
-        position: "top-right",
+      toast.success("Logged in Successfully😎", {
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
